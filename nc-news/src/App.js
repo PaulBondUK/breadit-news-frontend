@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import NavBar from "./components/Navigation/NavBar";
 import ArticlePage from "./components/Articles/ArticlePage";
 import SingleArticlePage from "./components/Articles/SingleArticlePage";
+import ErrorPage from "./components/Errors/ErrorPage";
 
 export default class App extends Component {
   state = {
@@ -19,7 +20,12 @@ export default class App extends Component {
         <NavBar />
         <Router>
           <ArticlePage path="/articles" loggedInUser={loggedInUser} />
-          <SingleArticlePage path="articles/:article_id" />
+          <SingleArticlePage
+            path="articles/:article_id"
+            loggedInUser={loggedInUser}
+            loginHandler={this.loginHandler}
+          />
+          <ErrorPage default />
         </Router>
       </div>
     );

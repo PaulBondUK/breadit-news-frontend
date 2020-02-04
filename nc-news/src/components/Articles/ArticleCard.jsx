@@ -1,41 +1,53 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import * as api from "../../Api";
 
 export default class ArticleCard extends Component {
   render() {
     const {
-      article_id,
-      title,
-      body,
-      votes,
-      topic,
-      author,
-      created_at,
-      comment_count
-    } = this.props.article;
+      article: {
+        article_id,
+        title,
+        body,
+        votes,
+        topic,
+        author,
+        created_at,
+        comment_count
+      },
+      addVoteToArticle,
+      index,
+      loggedInUser
+    } = this.props;
+
     return (
       <li>
         <Link to={`${article_id}`}>
           <h2>{title}</h2>
         </Link>
         <p>
-          By {author} in {topic}
+          By <Link to={`/users/${author}`}>{author}</Link> in{" "}
+          <Link to={`/topics/${topic}`}>{topic}</Link>
         </p>
-        <p>{body.substring(0, 250)}(...)</p>
+        <p>{body.substring(0, 180)}(...)</p>
         <p>
-          <button onClick={() => api.patchArticleById(article_id, -1)}>
+          <button
+            onClick={() => addVoteToArticle(article_id, -1, index)}
+            disabled={!loggedInUser ? true : loggedInUser === author}
+          >
             -
           </button>{" "}
           {votes} Votes{" "}
-          <button onClick={() => api.patchArticleById(article_id, 1)}>+</button>
-          | {comment_count} Comments | Posted: {created_at}
+          <button
+            onClick={() => addVoteToArticle(article_id, 1, index)}
+            disabled={!loggedInUser ? true : loggedInUser === author}
+          >
+            +
+          </button>
+          | {comment_count} Comments | Posted {created_at}
         </p>
       </li>
     );
   }
-
-  componentDidMount() {}
 }
 
 // article_id: 33;

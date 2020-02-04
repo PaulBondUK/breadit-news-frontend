@@ -3,24 +3,33 @@ import { Link } from "@reach/router";
 
 export default function SingleArticleCard(props) {
   const {
-    article_id,
-    title,
-    body,
-    votes,
-    topic,
-    author,
-    created_at,
-    comment_count
-  } = props.article;
+    article: { article_id, title, body, votes, topic, author, created_at },
+    addVoteToSingleArticle,
+    loggedInUser
+  } = props;
   return (
     <section>
       <h1>{title}</h1>
       <p>
-        By {author} in {topic}
+        By <Link to={`/users/${author}`}>{author}</Link> in{" "}
+        <Link to={`/topics/${topic}`}>{topic}</Link>
       </p>
       <p>{body}</p>
       <p>
-        {votes} Votes | {comment_count} Comments | Posted {created_at}
+        <button
+          onClick={() => addVoteToSingleArticle(article_id, -1)}
+          disabled={!loggedInUser ? true : loggedInUser === author}
+        >
+          -
+        </button>{" "}
+        {votes} Votes{" "}
+        <button
+          onClick={() => addVoteToSingleArticle(article_id, 1)}
+          disabled={!loggedInUser ? true : loggedInUser === author}
+        >
+          +
+        </button>{" "}
+        | Posted {created_at}
       </p>
     </section>
   );

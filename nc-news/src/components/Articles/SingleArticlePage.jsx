@@ -45,14 +45,4 @@ export default class SingleArticlePage extends Component {
         this.setState({ err: err, isLoading: false });
       });
   }
-
-  addVoteToSingleArticle = (article_id, voteChange) => {
-    api.patchArticleById(article_id, voteChange).then(article => {
-      this.setState(currentState => {
-        const updatedArticleData = { ...currentState.articleData };
-        updatedArticleData.votes = article.votes;
-        return { articleData: updatedArticleData };
-      });
-    });
-  };
 }

@@ -50,13 +50,12 @@ export default class CommentsList extends Component {
   }
 
   addVoteToComment = (comment_id, voteChange, index) => {
-    api.patchCommentById(comment_id, voteChange).then(() => {
-      this.setState(currentState => {
-        const updatedCommentsData = [...currentState.commentsData];
-        updatedCommentsData[index].votes =
-          updatedCommentsData[index].votes + voteChange;
-        return { commentsData: updatedCommentsData };
-      });
+    api.patchCommentById(comment_id, voteChange);
+    this.setState(currentState => {
+      const updatedCommentsData = [...currentState.commentsData];
+      updatedCommentsData[index].votes =
+        updatedCommentsData[index].votes + voteChange;
+      return { commentsData: updatedCommentsData };
     });
   };
 

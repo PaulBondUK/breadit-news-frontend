@@ -1,8 +1,16 @@
 import axios from "axios";
 
-export const getArticles = page => {
+export const getArticles = (limit, sort_by, order, topic, author) => {
   return axios
-    .get("https://bond-news.herokuapp.com/api/articles", { p: page })
+    .get("https://bond-news.herokuapp.com/api/articles", {
+      params: {
+        limit,
+        sort_by,
+        order,
+        topic,
+        author
+      }
+    })
     .then(({ data }) => {
       return data.articles;
     });
@@ -43,7 +51,6 @@ export const postCommentByArticleId = (article_id, username, body) => {
       { username, body }
     )
     .then(({ data }) => {
-      console.log(data.comment);
       return data.comment;
     });
 };
@@ -61,5 +68,22 @@ export const getCommentsByArticleId = article_id => {
     )
     .then(({ data }) => {
       return data.comments;
+    });
+};
+
+export const getTopics = () => {
+  return axios
+    .get("https://bond-news.herokuapp.com/api/topics")
+    .then(({ data }) => {
+      return data.topics;
+    });
+};
+
+export const getUser = username => {
+  return axios
+    .get(`https://bond-news.herokuapp.com/api/users/${username}`)
+    .then(({ data }) => {
+      console.log(data);
+      return data.user;
     });
 };

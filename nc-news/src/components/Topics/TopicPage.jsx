@@ -4,9 +4,9 @@ import TopicList from "./TopicList";
 export default function TopicPage(props) {
   const { loggedInUser } = props;
   return (
-    <div>
-      <h1>Topics</h1>
+    <main>
+      <h2>Topics</h2>
       <TopicList loggedInUser={loggedInUser} />
-    </div>
+    </main>
   );
 }

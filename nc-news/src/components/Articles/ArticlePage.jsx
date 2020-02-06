@@ -3,9 +3,9 @@ import ArticleList from "./ArticleList";
 
 export default function ArticlePage({ loggedInUser }) {
   return (
-    <div>
-      <h1>Articles</h1>
+    <main className="main-display">
+      <h2 className="page-title">Articles</h2>
       <ArticleList loggedInUser={loggedInUser} />
-    </div>
+    </main>
   );
 }

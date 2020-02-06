@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "@reach/router";
+import VoteChanger from "../Tools/VoteChanger";
+import { dateFormatter } from "../Tools/Utils";
 
 export default function CommentCard(props) {
   const {
     comment: { comment_id, author, votes, created_at, body },
-    addVoteToComment,
     index,
     loggedInUser,
     deleteComment
   } = props;
   return (
-    <div>
+    <li>
       <p>
-        By <Link to={`/users/${author}`}>{author}</Link> on {created_at}
+        <Link to={`/users/${author}`}>{author}</Link> on{" "}
+        {dateFormatter(created_at)}
         {loggedInUser === author && (
           <button
             onClick={() => {
@@ -25,21 +27,13 @@ export default function CommentCard(props) {
       </p>
       <p>{body}</p>
       <p>
-        {" "}
-        <button
-          onClick={() => addVoteToComment(comment_id, -1, index)}
-          disabled={!loggedInUser ? true : loggedInUser === author}
-        >
-          -
-        </button>{" "}
-        {votes} Votes{" "}
-        <button
-          onClick={() => addVoteToComment(comment_id, 1, index)}
-          disabled={!loggedInUser ? true : loggedInUser === author}
-        >
-          +
-        </button>
+        <VoteChanger
+          loggedInUser={loggedInUser}
+          comment_id={comment_id}
+          author={author}
+          votes={votes}
+        />
       </p>
-    </div>
+    </li>
   );
 }

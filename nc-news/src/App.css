@@ -1,11 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Crete+Round");
+
 * {
   padding: 2px;
-  margin: 0;
+  margin: 0px;
   /* background-color: rgb(142, 216, 248); */
-}
-
-.App {
-  text-align: center;
 }
 
 .App-header {
@@ -19,15 +17,147 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+li {
+  list-style-position: inside;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-display {
 }
+
+.header-container {
+  display: grid;
+  grid-template-rows: 70% 30%;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "header-title header-navbar" "header-title header-login";
+  background-color: rgb(255, 96, 136);
+}
+
+/* grid-template-areas:
+  "topLeft topRight" or "headerBar headerBar"
+  "bottomLeft bottomRight" or "sideBar bottomRight" */
+
+.header-title {
+  font-family: "Crete Round", serif;
+  font-size: 60px;
+  justify-content: center;
+  grid-area: header-title;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.site-title {
+  font-family: "Crete Round", serif;
+  font-size: 50px;
+  display: flex;
+}
+
+.title-logo {
+  height: 50px;
+  display: flex;
+}
+
+.header-navbar {
+  font-size: 5vmin;
+  grid-area: header-navbar;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-login {
+  font-size: 3vmin;
+  grid-area: header-login;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-login-button {
+  font-size: 20px;
+}
+
+.page-title {
+}
+
+.loader {
+}
+
+.article-list {
+}
+
+.article-card {
+}
+
+.article-card-title {
+}
+
+.article-card-author {
+}
+
+.article-card-body {
+}
+
+.article-card-votes {
+}
+
+.article-card-comments {
+}
+
+.article-card-date {
+}
+
+.more-articles-button {
+}
+
+a:link,
+a:visited {
+  color: rgb(58, 58, 58);
+  text-decoration: none;
+  text-decoration: underline;
+  /* cursor: auto; */
+}
+
+a:link:hover,
+a:visited:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+a:link:active,
+a:visited:active {
+  color: black;
+  text-decoration: underline;
+}
+
+/* * {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+* * {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+* * * {
+  background-color: rgba(0, 0, 255, 0.2);
+}
+* * * * {
+  background-color: rgba(255, 0, 255, 0.2);
+}
+* * * * * {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+* * * * * * {
+  background-color: rgba(255, 255, 0, 0.2);
+}
+* * * * * * * {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+* * * * * * * * {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+* * * * * * * * * {
+  background-color: rgba(0, 0, 255, 0.2);
+} */
+
+/* flex-wrap: wrap 
+width: 40vw 40vh*/

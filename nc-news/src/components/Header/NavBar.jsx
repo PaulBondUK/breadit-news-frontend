@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "@reach/router";
 
 export default function NavBar() {
   return (
-    <nav>
+    <Fragment>
       <Link to="/articles">Articles</Link>
       <Link to="/topics">Topics</Link>
-    </nav>
+    </Fragment>
   );
 }

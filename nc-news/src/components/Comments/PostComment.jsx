@@ -12,30 +12,26 @@ export default class PostComment extends Component {
 
     if (loggedInUser) {
       return (
-        <div>
-          <label>
-            Post comment as{" "}
-            <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
-            <form onSubmit={this.handleSubmit}>
-              <input
-                required
-                type="text"
-                placeholder="What are your thoughts?"
-                onChange={this.handleChange}
-                value={commentInput}
-              />
-              <button type="submit">Post</button>
-            </form>
-          </label>
-        </div>
+        <label>
+          Post comment as{" "}
+          <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              required
+              type="text"
+              placeholder="What are your thoughts?"
+              onChange={this.handleChange}
+              value={commentInput}
+            />
+            <button type="submit">Post</button>
+          </form>
+        </label>
       );
     } else {
       return (
-        <div>
-          {" "}
-          <button onClick={loginHandler}>{!loggedInUser && "Login"}</button> to
-          post a comment
-        </div>
+        <p>
+          <button onClick={loginHandler}>Login</button> to post a comment
+        </p>
       );
     }
   }
@@ -53,6 +49,9 @@ export default class PostComment extends Component {
       .then(newComment => {
         addPostedComment(newComment);
         this.setState({ commentInput: "" });
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 }

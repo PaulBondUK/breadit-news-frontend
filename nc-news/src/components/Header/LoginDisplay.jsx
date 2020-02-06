@@ -1,19 +1,19 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "@reach/router";
 
 export default function LoginDisplay({ loggedInUser, loginHandler }) {
   return (
-    <div>
+    <Fragment>
       {loggedInUser ? (
-        <span>
+        <Fragment>
           Logged in as <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
-        </span>
+        </Fragment>
       ) : (
-        "Not Logged in"
+        <Fragment>Not Logged in</Fragment>
       )}
-      <button onClick={loginHandler}>
+      <button className="header-login-button" onClick={loginHandler}>
         {loggedInUser ? "Logout" : "Login"}
       </button>
-    </div>
+    </Fragment>
   );
 }

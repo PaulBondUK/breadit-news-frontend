@@ -1,22 +1,31 @@
 import React from "react";
 import { Link } from "@reach/router";
-import BreadditLogo from "../../images/breaddit_logo.png";
-import LoginDisplay from "../Login/LoginDisplay";
-import NavBar from "../Navigation/NavBar";
+import BreaditLogo from "../../images/breadit_logo.png";
+import LoginDisplay from "./LoginDisplay";
+import NavBar from "./NavBar";
 
 export default function Header({ loggedInUser, loginHandler }) {
   return (
-    <header>
-      <div>
+    <header className="header-container">
+      <p className="header-title">
         <Link to="/">
-          <img src={BreadditLogo} alt="breaddit-logo" height="60px" />
-          <h1>BREADDIT</h1>
+          <img
+            src={BreaditLogo}
+            alt="breadit-logo"
+            height="60px"
+            className="title-logo"
+          />
         </Link>
-      </div>
-      <NavBar />
-      <div>
+        <h1 className="site-title">
+          <Link to="/">BREADIT</Link>
+        </h1>
+      </p>
+      <nav className="header-navbar">
+        <NavBar />
+      </nav>
+      <p className="header-login">
         <LoginDisplay loggedInUser={loggedInUser} loginHandler={loginHandler} />
-      </div>
+      </p>
     </header>
   );
 }

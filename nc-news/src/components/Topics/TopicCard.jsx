@@ -5,9 +5,9 @@ export default function TopicCard(props) {
   const { topic } = props;
   return (
     <li>
-      <Link to={topic.slug}>
-        <h2>{topic.slug}</h2>
-      </Link>
+      <h3>
+        <Link to={topic.slug}>/{topic.slug}</Link>
+      </h3>
       <p>{topic.description}</p>
     </li>
   );

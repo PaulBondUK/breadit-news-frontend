@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import * as api from "../../Api";
 
 export default class VoteChanger extends Component {
@@ -8,16 +8,17 @@ export default class VoteChanger extends Component {
   };
 
   render() {
-    const { article_id, loggedInUser, author, votes } = this.props;
+    const { article_id, comment_id, loggedInUser, author, votes } = this.props;
     const { voteChange } = this.state;
+    const id = article_id ? article_id : comment_id;
     return (
-      <div>
+      <Fragment>
         {votes + voteChange}{" "}
         {votes + voteChange === 1 || votes + voteChange === -1
           ? "Vote"
           : "Votes"}
         <button
-          onClick={() => this.addVoteToArticle(article_id, -1)}
+          onClick={() => this.addVoteToItem(id, -1)}
           disabled={
             !loggedInUser
               ? true
@@ -29,7 +30,7 @@ export default class VoteChanger extends Component {
           -
         </button>
         <button
-          onClick={() => this.addVoteToArticle(article_id, 1)}
+          onClick={() => this.addVoteToItem(id, 1)}
           disabled={
             !loggedInUser
               ? true
@@ -40,16 +41,22 @@ export default class VoteChanger extends Component {
         >
           +
         </button>
-      </div>
+      </Fragment>
     );
   }
 
-  addVoteToArticle = (article_id, voteChange) => {
+  addVoteToItem = (id, voteChange) => {
     this.setState(currentState => {
       return { voteChange: currentState.voteChange + voteChange };
     });
-    api.patchArticleById(article_id, voteChange).catch(({ err }) => {
-      this.setState({ err: err.response, voteChange: 0 });
-    });
+    if (this.props.article_id) {
+      api.patchArticleById(id, voteChange).catch(({ err }) => {
+        this.setState({ err: err.response, voteChange: 0 });
+      });
+    } else {
+      api.patchCommentById(id, voteChange).catch(({ err }) => {
+        this.setState({ err: err.response, voteChange: 0 });
+      });
+    }
   };
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import VoteChanger from "../Tools/VoteChanger";
+import { dateFormatter } from "../Tools/Utils";
 
 export default function ArticleCard(props) {
   const {
@@ -18,24 +19,26 @@ export default function ArticleCard(props) {
   } = props;
 
   return (
-    <li>
-      <Link to={`/articles/${article_id}`}>
-        <h2>{title}</h2>
-      </Link>
-      <p>
+    <li className="article-card">
+      <h3 className="article-card-title">
+        <Link to={`/articles/${article_id}`}>{title}</Link>
+      </h3>
+
+      <p className="article-card-author">
         By <Link to={`/users/${author}`}>{author}</Link> in{" "}
         <Link to={`/topics/${topic}`}>{topic}</Link>
       </p>
-      <p>{body.substring(0, 180)}(...)</p>
-      <VoteChanger
-        loggedInUser={loggedInUser}
-        article_id={article_id}
-        author={author}
-        votes={votes}
-      />{" "}
-      <p>
-        {comment_count} Comments | Posted {created_at}
+      <p className="article-card-body">{body.substring(0, 180)}(...)</p>
+      <p className="article-card-votes">
+        <VoteChanger
+          loggedInUser={loggedInUser}
+          article_id={article_id}
+          author={author}
+          votes={votes}
+        />
       </p>
+      <p className="article-card-comments">{comment_count} Comments</p>
+      <p className="article-card-date">Posted {dateFormatter(created_at)}</p>
     </li>
   );
 }

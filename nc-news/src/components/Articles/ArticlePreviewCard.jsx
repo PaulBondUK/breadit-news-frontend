@@ -7,9 +7,9 @@ export default function ArticlePreviewCard(props) {
   } = props;
   return (
     <li>
-      <Link to={`/articles/${article_id}`}>
-        <h3>{title}</h3>
-      </Link>
+      <h4>
+        <Link to={`/articles/${article_id}`}>{title}</Link>
+      </h4>
       <p>
         By <Link to={`/users/${author}`}>{author}</Link> in{" "}
         <Link to={`/topics/${topic}`}>{topic}</Link>

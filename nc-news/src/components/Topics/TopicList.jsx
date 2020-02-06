@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../../Api";
 import TopicCard from "./TopicCard";
 import ErrorPage from "../Errors/ErrorPage";
+import Loader from "../Tools/Loader";
 
 export default class TopicList extends Component {
   state = {
@@ -14,21 +15,26 @@ export default class TopicList extends Component {
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
-      return <p>Loading...</p>;
+      return <Loader />;
     } else {
       return (
-        <ul>
+        <ol>
           {topicData.map(topic => {
             return <TopicCard key={topic.slug} topic={topic} />;
           })}
-        </ul>
+        </ol>
       );
     }
   }
 
   componentDidMount() {
-    api.getTopics().then(topicData => {
-      this.setState({ topicData, isLoading: false });
-    });
+    api
+      .getTopics()
+      .then(topicData => {
+        this.setState({ topicData, isLoading: false });
+      })
+      .catch(err => {
+        this.setState({ err, isLoading: false });
+      });
   }
 }

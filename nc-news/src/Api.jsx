@@ -12,7 +12,7 @@ export const getArticles = (limit, sort_by, order, topic, author) => {
       }
     })
     .then(({ data }) => {
-      return data.articles;
+      return data;
     });
 };
 
@@ -83,7 +83,6 @@ export const getUser = username => {
   return axios
     .get(`https://bond-news.herokuapp.com/api/users/${username}`)
     .then(({ data }) => {
-      console.log(data);
       return data.user;
     });
 };

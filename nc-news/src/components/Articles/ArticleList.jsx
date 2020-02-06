@@ -3,10 +3,14 @@ import * as api from "../../Api";
 import ArticleCard from "./ArticleCard";
 import ErrorPage from "../Errors/ErrorPage";
 import SortArticles from "./SortArticles";
+import Loader from "../Tools/Loader";
+
+// React Fragment
 
 export default class ArticleList extends Component {
   state = {
     articleData: null,
+    total_count: null,
     limit: 10,
     isLoading: true,
     err: null,
@@ -28,24 +32,16 @@ export default class ArticleList extends Component {
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
-      return (
-        <div>
-          <SortArticles
-            selectedOption={selectedOption}
-            sortArticlesBy={this.sortArticlesBy}
-          />
-          <p>Loading...</p>
-        </div>
-      );
+      return <Loader />;
     } else {
       return (
-        <div>
+        <div className="article-list">
           {author && <h2>Articles by {author}</h2>}
           <SortArticles
             selectedOption={selectedOption}
             sortArticlesBy={this.sortArticlesBy}
           />
-          <ul>
+          <ol className="article-list">
             {articleData.map(article => {
               return (
                 <ArticleCard
@@ -55,8 +51,12 @@ export default class ArticleList extends Component {
                 />
               );
             })}
-          </ul>
-          <button disabled={noMoreArticles} onClick={this.moreArticles}>
+          </ol>
+          <button
+            className="more-articles-button"
+            disabled={noMoreArticles}
+            onClick={this.loadMoreArticles}
+          >
             {noMoreArticles ? "No more articles" : "Load more articles"}
           </button>
         </div>
@@ -68,11 +68,12 @@ export default class ArticleList extends Component {
     const { topic_slug, author } = this.props;
     api
       .getArticles(null, null, null, topic_slug, author)
-      .then(articleData => {
+      .then(({ articles, total_count }) => {
         this.setState({
-          articleData,
+          articleData: articles,
           isLoading: false,
-          noMoreArticles: articleData.length < 10
+          noMoreArticles: articles.length === total_count,
+          total_count
         });
       })
       .catch(err => {
@@ -80,58 +81,28 @@ export default class ArticleList extends Component {
       });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { sort_by, order, limit, articleData } = this.state;
+  loadMoreArticles = () => {
     const { topic_slug, author } = this.props;
-    if (prevState.sort_by !== sort_by || prevState.order !== order) {
-      this.setState({
-        isLoading: true,
-        limit: 10,
-        noMoreArticles: false
+    const { limit, sort_by, order } = this.state;
+    api
+      .getArticles(limit + 10, sort_by, order, topic_slug, author)
+      .then(({ articles, total_count }) => {
+        this.setState(currentState => {
+          return {
+            articleData: articles,
+            limit: currentState.limit + 10,
+            noMoreArticles: articles.length === total_count
+          };
+        });
+      })
+      .catch(err => {
+        this.setState({ err: err });
       });
-      api
-        .getArticles(10, sort_by, order, topic_slug, author)
-        .then(newArticleData => {
-          this.setState({
-            articleData: newArticleData,
-            isLoading: false,
-            noMoreArticles: articleData.length < 10
-          });
-        })
-        .catch(err => {
-          this.setState({ err: err, isLoading: false });
-        });
-    } else if (prevState.limit !== limit && limit !== 10) {
-      api
-        .getArticles(limit, sort_by, order, topic_slug, author)
-        .then(newArticleData => {
-          if (newArticleData.length === articleData.length) {
-            this.setState({ noMoreArticles: true });
-          } else if (newArticleData.length - articleData.length < 10) {
-            this.setState({
-              articleData: newArticleData,
-              noMoreArticles: true
-            });
-          } else {
-            this.setState({ articleData: newArticleData });
-          }
-        })
-        .catch(err => {
-          this.setState({ err: err, isLoading: false });
-        });
-    }
-  }
-
-  moreArticles = () => {
-    this.setState(currentState => {
-      return {
-        limit: currentState.limit + 10
-      };
-    });
   };
 
   sortArticlesBy = event => {
     const selectedOption = event.target.value;
+    const { topic_slug, author } = this.props;
     const sortingRefObject = {
       Newest: { sort_by: "created_at", order: "desc" },
       Oldest: { sort_by: "created_at", order: "asc" },
@@ -146,10 +117,65 @@ export default class ArticleList extends Component {
         order: "asc"
       }
     };
-    this.setState({
-      sort_by: sortingRefObject[selectedOption].sort_by,
-      order: sortingRefObject[selectedOption].order,
-      selectedOption
-    });
+    const sort_by = sortingRefObject[selectedOption].sort_by;
+    const order = sortingRefObject[selectedOption].order;
+    api
+      .getArticles(10, sort_by, order, topic_slug, author)
+      .then(({ articles, total_count }) => {
+        this.setState({
+          articleData: articles,
+          total_count,
+          sort_by,
+          order,
+          selectedOption,
+          limit: 10,
+          noMoreArticles: articles.length === total_count
+        });
+      })
+      .catch(err => {
+        this.setState({ err: err });
+      });
   };
 }
+
+// componentDidUpdate(prevProps, prevState) {
+//   const { sort_by, order, limit, articleData } = this.state;
+//   const { topic_slug, author } = this.props;
+//   if (prevState.sort_by !== sort_by || prevState.order !== order) {
+//     this.setState({
+//       isLoading: true,
+//       limit: 10,
+//       noMoreArticles: false
+//     });
+//     api
+//       .getArticles(10, sort_by, order, topic_slug, author)
+//       .then(newArticleData => {
+//         this.setState({
+//           articleData: newArticleData,
+//           isLoading: false,
+//           noMoreArticles: articleData.length < 10
+//         });
+//       })
+//       .catch(err => {
+//         this.setState({ err: err, isLoading: false });
+//       });
+//   } else if (prevState.limit !== limit && limit !== 10) {
+//     api
+//       .getArticles(limit, sort_by, order, topic_slug, author)
+//       .then(newArticleData => {
+//         if (newArticleData.length === articleData.length) {
+//           this.setState({ noMoreArticles: true });
+//         } else if (newArticleData.length - articleData.length < 10) {
+//           this.setState({
+//             articleData: newArticleData,
+//             noMoreArticles: true
+//           });
+//         } else {
+//           this.setState({ articleData: newArticleData });
+//         }
+//       })
+//       .catch(err => {
+//         this.setState({ err: err, isLoading: false });
+//       });
+//   }
+// }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import VoteChanger from "../Tools/VoteChanger";
+import { dateFormatter } from "../Tools/Utils";
 
 export default function SingleArticleCard(props) {
   const {
@@ -9,19 +10,21 @@ export default function SingleArticleCard(props) {
   } = props;
   return (
     <section>
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       <p>
         By <Link to={`/users/${author}`}>{author}</Link> in{" "}
         <Link to={`/topics/${topic}`}>{topic}</Link>
       </p>
       <p>{body}</p>
-      <VoteChanger
-        loggedInUser={loggedInUser}
-        article_id={article_id}
-        author={author}
-        votes={votes}
-      />
-      <p>Posted {created_at}</p>
+      <p>
+        <VoteChanger
+          loggedInUser={loggedInUser}
+          article_id={article_id}
+          author={author}
+          votes={votes}
+        />
+      </p>
+      <p>Posted {dateFormatter(created_at)}</p>
     </section>
   );
 }

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import * as api from "../../Api";
 import SingleArticleCard from "./SingleArticleCard";
-import CommentsList from "../Comments/CommentsList";
+import CommentList from "../Comments/CommentList";
 import ErrorPage from "../Errors/ErrorPage";
+import Loader from "../Tools/Loader";
 
 export default class SingleArticlePage extends Component {
   state = { articleData: null, isLoading: true, err: null };
@@ -13,23 +14,23 @@ export default class SingleArticlePage extends Component {
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
-      return <p>Loading...</p>;
+      return <Loader />;
     } else {
       return (
-        <div>
+        <main>
           <SingleArticleCard
             article={articleData}
             addVoteToSingleArticle={this.addVoteToSingleArticle}
             loggedInUser={loggedInUser}
           />
           {articleData && (
-            <CommentsList
+            <CommentList
               article_id={article_id}
               loggedInUser={loggedInUser}
               loginHandler={loginHandler}
             />
           )}
-        </div>
+        </main>
       );
     }
   }

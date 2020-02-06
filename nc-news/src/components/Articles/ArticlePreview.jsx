@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../../Api";
 import ErrorPage from "../Errors/ErrorPage";
 import ArticlePreviewCard from "./ArticlePreviewCard";
+import Loader from "../Tools/Loader";
 
 export default class ArticlePreview extends Component {
   state = {
@@ -14,21 +15,16 @@ export default class ArticlePreview extends Component {
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     } else {
       return (
-        <div>
-          <ul>
-            {articleData.map(article => {
-              return (
-                <ArticlePreviewCard
-                  article={article}
-                  key={article.article_id}
-                />
-              );
-            })}
-          </ul>
-        </div>
+        <ol>
+          {articleData.map(article => {
+            return (
+              <ArticlePreviewCard article={article} key={article.article_id} />
+            );
+          })}
+        </ol>
       );
     }
   }
@@ -37,11 +33,11 @@ export default class ArticlePreview extends Component {
     const { sort_by } = this.props;
     api
       .getArticles(5, sort_by)
-      .then(articleData => {
-        this.setState({ articleData, isLoading: false });
+      .then(({ articles }) => {
+        this.setState({ articleData: articles, isLoading: false });
       })
       .catch(err => {
-        this.setState({ err });
+        this.setState({ err, isLoading: false });
       });
   }
 }

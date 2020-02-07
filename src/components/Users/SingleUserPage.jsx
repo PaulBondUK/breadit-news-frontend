@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../../Api";
 import ErrorPage from "../Errors/ErrorPage";
 import ArticleList from "../Articles/ArticleList";
+import Loader from "../Tools/Loader";
 
 export default class SingleUserPage extends Component {
   state = {
@@ -11,21 +12,22 @@ export default class SingleUserPage extends Component {
   };
   render() {
     const { userData, isLoading, err } = this.state;
+    const { loggedInUser } = this.props;
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     } else {
       return (
-        <div>
-          <h1>{userData.username}</h1>
+        <main>
+          <h2>{userData.username}</h2>
           <p>Name: {userData.name}</p>
           <img
             src={userData.avatar_url}
             alt={`avatar of user ${userData.username}`}
           />
-          <ArticleList author={userData.username} />
-        </div>
+          <ArticleList author={userData.username} loggedInUser={loggedInUser} />
+        </main>
       );
     }
   }
@@ -38,13 +40,11 @@ export default class SingleUserPage extends Component {
         this.setState({ userData, isLoading: false });
       })
       .catch(err => {
-        console.log(err);
         this.setState({ err });
       });
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props);
     const { username } = this.props;
     if (prevProps.username !== username) {
       api
@@ -53,7 +53,6 @@ export default class SingleUserPage extends Component {
           this.setState({ userData, isLoading: false });
         })
         .catch(err => {
-          console.log(err);
           this.setState({ err });
         });
     }

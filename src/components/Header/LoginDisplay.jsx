@@ -6,10 +6,11 @@ export default function LoginDisplay({ loggedInUser, loginHandler }) {
     <Fragment>
       {loggedInUser && (
         <Fragment>
-          Logged in as
+          Logged in as&nbsp;
           <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
         </Fragment>
       )}
+      &nbsp;
       <button className="header-login-button" onClick={loginHandler}>
         {loggedInUser ? "Logout" : "Click to Login"}
       </button>

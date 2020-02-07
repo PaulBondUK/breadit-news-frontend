@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Crete+Round");
+@import url("https://fonts.googleapis.com/css?family=Nova+Round");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
 * {
-  padding: 2px;
+  padding: 3px 0 3px 0;
   margin: 0px;
-  /* background-color: rgb(142, 216, 248); */
+}
+
+.App {
+  font-family: "Roboto", sans-serif;
 }
 
 .App-header {
@@ -20,8 +25,8 @@
 li {
   list-style-position: inside;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
 }
 
 .main-display {
@@ -29,10 +34,40 @@ li {
 
 .header-container {
   display: grid;
-  grid-template-rows: 70% 30%;
-  grid-template-columns: 50% 50%;
-  grid-template-areas: "header-title header-navbar" "header-title header-login";
-  background-color: rgb(255, 96, 136);
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "header-title header-navbar header-login";
+  background-color: rgb(236, 0, 141);
+}
+
+header a:link,
+header a:visited {
+  color: white;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+}
+
+header a:link:hover,
+header a:visited:hover {
+  color: lightskyblue;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+}
+
+header a:link:active,
+header a:visited:active {
+  color: white;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+}
+
+.site-title a:link,
+.site-title a:visited,
+.site-title a:link:hover,
+.site-title a:visited:hover,
+.site-title a:link:active,
+.site-title a:visited:active {
+  color: white;
+  text-decoration: none;
 }
 
 /* grid-template-areas:
@@ -61,17 +96,50 @@ li {
 }
 
 .header-navbar {
-  font-size: 5vmin;
+  font-size: 2.5vmin;
   grid-area: header-navbar;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: "Nova Round", cursive;
+  color: white;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.navbar-link {
+  margin: 0 20px 0 20px;
+  justify-content: center;
 }
 
 .header-login {
-  font-size: 3vmin;
+  font-size: 2.5vmin;
   grid-area: header-login;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  color: white;
+}
+
+header a:link,
+header a:visited {
+  color: white;
+  text-decoration: underline;
+  -webkit-transition: color 0.3s;
+}
+
+header a:link:hover,
+header a:visited:hover {
+  color: lightskyblue;
+  text-decoration: underline;
+  -webkit-transition: color 0.3s;
+}
+
+header a:link:active,
+header a:visited:active {
+  color: white;
+  text-decoration: underline;
+  -webkit-transition: color 0.3s;
 }
 
 .header-login-button {
@@ -88,9 +156,14 @@ li {
 }
 
 .article-card {
+  width: 80%;
+  border: 2px;
+  border-color: rgb(142, 216, 248);
 }
 
 .article-card-title {
+  background-color: rgb(142, 216, 248);
+  padding: 10px;
 }
 
 .article-card-author {
@@ -111,12 +184,26 @@ li {
 .more-articles-button {
 }
 
-a:link,
+@media only screen and (max-width: 600) {
+  .api {
+    background-colour: blue;
+  }
+
+  /* .App {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Nav {
+    flex-direction: row;
+  } */
+}
+
+/* a:link,
 a:visited {
   color: rgb(58, 58, 58);
   text-decoration: none;
   text-decoration: underline;
-  /* cursor: auto; */
 }
 
 a:link:hover,
@@ -129,7 +216,7 @@ a:link:active,
 a:visited:active {
   color: black;
   text-decoration: underline;
-}
+} */
 
 /* * {
   background-color: rgba(255, 0, 0, 0.2);

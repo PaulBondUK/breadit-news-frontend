@@ -1,14 +1,16 @@
 import axios from "axios";
 
-export const getArticles = (limit, sort_by, order, topic, author) => {
+export const getArticles = args => {
+  const { page, sort_by, order, topic, author, limit } = args;
   return axios
     .get("https://bond-news.herokuapp.com/api/articles", {
       params: {
-        limit,
+        p: page,
         sort_by,
         order,
         topic,
-        author
+        author,
+        limit
       }
     })
     .then(({ data }) => {

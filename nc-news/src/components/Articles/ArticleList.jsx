@@ -11,6 +11,7 @@ export default class ArticleList extends Component {
   state = {
     articleData: null,
     total_count: null,
+    page: 1,
     limit: 10,
     isLoading: true,
     err: null,
@@ -67,12 +68,11 @@ export default class ArticleList extends Component {
   componentDidMount() {
     const { topic_slug, author } = this.props;
     api
-      .getArticles(null, null, null, topic_slug, author)
+      .getArticles({ topic_slug, author })
       .then(({ articles, total_count }) => {
         this.setState({
           articleData: articles,
           isLoading: false,
-          noMoreArticles: articles.length === total_count,
           total_count
         });
       })
@@ -81,17 +81,24 @@ export default class ArticleList extends Component {
       });
   }
 
+  componentDidUpdate() {
+    const { articleData, total_count, noMoreArticles } = this.state;
+    if (articleData.length === total_count && noMoreArticles === false) {
+      this.setState({ noMoreArticles: true });
+    }
+  }
+
   loadMoreArticles = () => {
     const { topic_slug, author } = this.props;
-    const { limit, sort_by, order } = this.state;
+    const { page, sort_by, order } = this.state;
+    const newPage = page + 1;
     api
-      .getArticles(limit + 10, sort_by, order, topic_slug, author)
-      .then(({ articles, total_count }) => {
+      .getArticles({ page: newPage, sort_by, order, topic_slug, author })
+      .then(({ articles }) => {
         this.setState(currentState => {
           return {
-            articleData: articles,
-            limit: currentState.limit + 10,
-            noMoreArticles: articles.length === total_count
+            articleData: [...currentState.articleData, ...articles],
+            page: newPage
           };
         });
       })
@@ -120,7 +127,7 @@ export default class ArticleList extends Component {
     const sort_by = sortingRefObject[selectedOption].sort_by;
     const order = sortingRefObject[selectedOption].order;
     api
-      .getArticles(10, sort_by, order, topic_slug, author)
+      .getArticles({ sort_by, order, topic_slug, author })
       .then(({ articles, total_count }) => {
         this.setState({
           articleData: articles,
@@ -128,8 +135,8 @@ export default class ArticleList extends Component {
           sort_by,
           order,
           selectedOption,
-          limit: 10,
-          noMoreArticles: articles.length === total_count
+          page: 1,
+          noMoreArticles: false
         });
       })
       .catch(err => {

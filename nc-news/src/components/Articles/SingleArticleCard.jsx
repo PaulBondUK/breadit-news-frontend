@@ -12,8 +12,11 @@ export default function SingleArticleCard(props) {
     <section>
       <h2>{title}</h2>
       <p>
-        By <Link to={`/users/${author}`}>{author}</Link> in{" "}
-        <Link to={`/topics/${topic}`}>{topic}</Link>
+        By{" "}
+        <Link to={`/users/${author}`}>
+          {author === loggedInUser ? "you" : author}
+        </Link>{" "}
+        in <Link to={`/topics/${topic}`}>{topic}</Link>
       </p>
       <p>{body}</p>
       <p>

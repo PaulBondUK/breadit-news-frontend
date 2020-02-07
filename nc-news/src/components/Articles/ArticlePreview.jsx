@@ -32,7 +32,7 @@ export default class ArticlePreview extends Component {
   componentDidMount() {
     const { sort_by } = this.props;
     api
-      .getArticles(5, sort_by)
+      .getArticles({ limit: 5, sort_by })
       .then(({ articles }) => {
         this.setState({ articleData: articles, isLoading: false });
       })

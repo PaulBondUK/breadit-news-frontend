@@ -13,8 +13,10 @@ export default function CommentCard(props) {
   return (
     <li>
       <p>
-        <Link to={`/users/${author}`}>{author}</Link> on{" "}
-        {dateFormatter(created_at)}
+        <Link to={`/users/${author}`}>
+          {author === loggedInUser ? "you" : author}
+        </Link>{" "}
+        on {dateFormatter(created_at)}
         {loggedInUser === author && (
           <button
             onClick={() => {

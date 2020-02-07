@@ -42,4 +42,20 @@ export default class SingleUserPage extends Component {
         this.setState({ err });
       });
   }
+
+  componentDidUpdate(prevProps) {
+    console.log(this.props);
+    const { username } = this.props;
+    if (prevProps.username !== username) {
+      api
+        .getUser(username)
+        .then(userData => {
+          this.setState({ userData, isLoading: false });
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState({ err });
+        });
+    }
+  }
 }

@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 export default function Header({ loggedInUser, loginHandler }) {
   return (
     <header className="header-container">
-      <p className="header-title">
+      <section className="header-title">
         <Link to="/">
           <img
             src={BreaditLogo}
@@ -19,7 +19,7 @@ export default function Header({ loggedInUser, loginHandler }) {
         <h1 className="site-title">
           <Link to="/">BREADIT</Link>
         </h1>
-      </p>
+      </section>
       <nav className="header-navbar">
         <NavBar />
       </nav>

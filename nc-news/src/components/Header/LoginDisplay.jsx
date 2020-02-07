@@ -4,15 +4,14 @@ import { Link } from "@reach/router";
 export default function LoginDisplay({ loggedInUser, loginHandler }) {
   return (
     <Fragment>
-      {loggedInUser ? (
+      {loggedInUser && (
         <Fragment>
-          Logged in as <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
+          {"Logged in as"}
+          <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
         </Fragment>
-      ) : (
-        <Fragment>Not Logged in</Fragment>
       )}
       <button className="header-login-button" onClick={loginHandler}>
-        {loggedInUser ? "Logout" : "Login"}
+        {loggedInUser ? "Logout" : "Click to Login"}
       </button>
     </Fragment>
   );

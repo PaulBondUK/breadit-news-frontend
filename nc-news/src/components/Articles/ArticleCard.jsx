@@ -25,8 +25,11 @@ export default function ArticleCard(props) {
       </h3>
 
       <p className="article-card-author">
-        By <Link to={`/users/${author}`}>{author}</Link> in{" "}
-        <Link to={`/topics/${topic}`}>{topic}</Link>
+        By{" "}
+        <Link to={`/users/${author}`}>
+          {author === loggedInUser ? "you" : author}
+        </Link>{" "}
+        in <Link to={`/topics/${topic}`}>{topic}</Link>
       </p>
       <p className="article-card-body">{body.substring(0, 180)}(...)</p>
       <p className="article-card-votes">

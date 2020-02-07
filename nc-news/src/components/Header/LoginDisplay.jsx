@@ -6,7 +6,7 @@ export default function LoginDisplay({ loggedInUser, loginHandler }) {
     <Fragment>
       {loggedInUser && (
         <Fragment>
-          {"Logged in as"}
+          Logged in as
           <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
         </Fragment>
       )}

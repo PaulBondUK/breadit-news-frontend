@@ -98,18 +98,25 @@ header a:visited:active {
 .header-navbar {
   font-size: 2.5vmin;
   grid-area: header-navbar;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  /* justify-content: space-evenly;
+  align-items: center; */
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "navbar-articles navbar-topics";
   font-family: "Nova Round", cursive;
   color: white;
   letter-spacing: 2px;
   font-weight: bold;
 }
 
-.navbar-link {
+.navbar-link-articles {
   margin: 0 20px 0 20px;
-  justify-content: center;
+  grid-area: navbar-articles;
+}
+
+.navbar-link-topics {
+  margin: 0 20px 0 20px;
+  grid-area: navbar-topics;
 }
 
 .header-login {

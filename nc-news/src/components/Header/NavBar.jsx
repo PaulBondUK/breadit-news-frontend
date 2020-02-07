@@ -5,15 +5,11 @@ export default function NavBar() {
   return (
     <Fragment>
       <ul>
-        <li>
-          <Link className="navbar-link" to="/articles">
-            ARTICLES
-          </Link>
+        <li className="navbar-link-articles">
+          <Link to="/articles">ARTICLES</Link>
         </li>
-        <li>
-          <Link className="navbar-link" to="/topics">
-            TOPICS
-          </Link>
+        <li className="navbar-link-topics">
+          <Link to="/topics">TOPICS</Link>
         </li>
         {/* <li>
           <Link className="navbar-link" to="/">

@@ -83,7 +83,12 @@ export default class ArticleList extends Component {
 
   componentDidUpdate() {
     const { articleData, total_count, noMoreArticles } = this.state;
-    if (articleData.length === total_count && noMoreArticles === false) {
+    if (
+      articleData &&
+      total_count &&
+      articleData.length === total_count &&
+      noMoreArticles === false
+    ) {
       this.setState({ noMoreArticles: true });
     }
   }

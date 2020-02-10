@@ -578,7 +578,7 @@ h4 {
     margin-right: 1%;
     padding-left: 1%;
     padding-right: 1%;
-    min-height: calc(100vh - 170px);
+    min-height: calc(100vh - 180px);
   }
 
   footer {

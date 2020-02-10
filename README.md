@@ -1,9 +1,37 @@
-10. use the site on my mobile without sacrificing style or functionality (as I may not have my laptop nearby).
-11. follow the readme instructions to easily run the project locally.
-12. find a link to the hosted version of the project in the readme.
-13. find a link to the back-end repository of the project in the readme.
-14. find a link to the hosted version of the back-end project in the readme.
-
 # Breadit-News
 
-Breadit-News is a is a social news aggregation, web content rating, and discussion website created using React.
+Breadit-News is a is a Reddit-style social news aggregation, web content rating, and discussion website created using React and CSS. Think Reddit, but with endless bread images and puns.
+
+It was created as a front-end project while studying at [Northcoders](https://www.northcoders.com), to provide a user interface to my [back-end project](https://github.com/PaulBondUK/be-nc-news).
+
+It was created with React and CSS, using [@reach/router](https://github.com/reach/router) for internal routing and [Axios](https://github.com/axios/axios) for API requests.
+
+## Prerequisites
+
+Ensure you have at least NodeJS v12.12.0 installed on your machine. Run the following command to check:
+
+```
+node --version
+```
+
+## Installation instructions
+
+To install:
+
+```
+git clone https://github.com/PaulBondUK/breadit-news
+
+cd breadit-news
+
+npm install
+```
+
+## Running the App
+
+To run the app run the following command in terminal:
+
+```
+npm start
+```
+
+React will start a development server and open a browser window to show the Breadit-News App.

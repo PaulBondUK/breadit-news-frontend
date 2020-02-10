@@ -1,8 +1,10 @@
 # Breadit-News
 
-Breadit-News is a is a Reddit-style social news aggregation, web content rating, and discussion website created using React and CSS. Think Reddit, but with endless bread images and puns.
+Breadit-News is a is a Reddit-style social news aggregation, web content rating, and discussion website. Think Reddit, but with endless bread images and puns.
 
 It was created as a front-end project while studying at [Northcoders](https://www.northcoders.com), to provide a user interface to my [back-end project](https://github.com/PaulBondUK/be-nc-news).
+
+## Libraries
 
 It was created with React and CSS, using [@reach/router](https://github.com/reach/router) for internal routing and [Axios](https://github.com/axios/axios) for API requests.
 

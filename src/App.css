@@ -89,10 +89,10 @@ h4 {
 }
 
 .vote-changer-button {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   font-weight: bold;
-  font-size: medium;
+  font-size: 1.2em;
   color: rgb(65, 63, 77);
   background-color: white;
   margin-left: 1px;
@@ -263,7 +263,7 @@ h4 {
 }
 
 .post-comment-input {
-  width: 80vw;
+  width: 70vw;
   height: 50px;
   font-size: 1em;
   text-align: start;
@@ -315,7 +315,6 @@ h4 {
   padding-top: 5px 0 5px 0;
   background-color: rgb(183, 219, 241);
   color: rgb(65, 63, 77);
-  /* border-radius: 10px; */
 }
 
 .article-card-title {

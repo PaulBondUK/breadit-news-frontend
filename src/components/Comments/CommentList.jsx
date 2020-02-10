@@ -70,11 +70,8 @@ export default class CommentList extends Component {
       .deleteCommentByCommentId(comment_id)
       .then(() => {
         this.setState(currentState => {
-          const newCommentsData = [];
-          currentState.commentsData.forEach(comment => {
-            if (comment.comment_id !== comment_id) {
-              newCommentsData.push(comment);
-            }
+          const newCommentsData = currentState.commentsData.filter(comment => {
+            return comment.comment_id !== comment_id;
           });
           return { commentsData: newCommentsData };
         });

@@ -3,9 +3,13 @@ import React from "react";
 export default function SortArticles(props) {
   const { selectedOption, sortArticlesBy } = props;
   return (
-    <label>
-      Sorting Articles By
-      <select value={selectedOption} onChange={event => sortArticlesBy(event)}>
+    <label className="sorting-articles-container">
+      Sorting Articles By&nbsp;
+      <select
+        className="sorting-articles-dropdown"
+        value={selectedOption}
+        onChange={event => sortArticlesBy(event)}
+      >
         <option value="Newest">Newest</option>
         <option value="Oldest">Oldest</option>
         <option value="Most Votes">Most Votes</option>

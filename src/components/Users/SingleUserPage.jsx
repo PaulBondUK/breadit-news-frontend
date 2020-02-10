@@ -12,7 +12,7 @@ export default class SingleUserPage extends Component {
   };
   render() {
     const { userData, isLoading, err } = this.state;
-    const { loggedInUser } = this.props;
+    const { loggedInUser, username } = this.props;
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
@@ -20,12 +20,15 @@ export default class SingleUserPage extends Component {
     } else {
       return (
         <main>
-          <h2>{userData.username}</h2>
-          <p>Name: {userData.name}</p>
-          <img
-            src={userData.avatar_url}
-            alt={`avatar of user ${userData.username}`}
-          />
+          <section className="single-user-container">
+            <img
+              className="single-user-avatar"
+              src={userData.avatar_url}
+              alt={`avatar of user ${userData.username}`}
+            />
+            <h2 className="single-user-title">{username}</h2>
+            <p className="single-user-fullname">Name: {userData.name}</p>
+          </section>
           <ArticleList author={userData.username} loggedInUser={loggedInUser} />
         </main>
       );

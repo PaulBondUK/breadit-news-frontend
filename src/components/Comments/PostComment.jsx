@@ -1,37 +1,49 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../../Api";
+import ErrorPage from "../Errors/ErrorPage";
 
 export default class PostComment extends Component {
   state = {
-    commentInput: ""
+    commentInput: "",
+    err: null
   };
   render() {
     const { loggedInUser, loginHandler } = this.props;
-    const { commentInput } = this.state;
-
-    if (loggedInUser) {
+    const { commentInput, err } = this.state;
+    if (err) {
+      return <ErrorPage err={err} />;
+    } else if (loggedInUser) {
       return (
-        <label>
-          Post comment as{" "}
-          <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
+        <section className="post-comment-container">
           <form onSubmit={this.handleSubmit}>
             <input
               required
-              type="text"
               placeholder="What are your thoughts?"
               onChange={this.handleChange}
               value={commentInput}
+              className="post-comment-input"
             />
-            <button type="submit">Post</button>
+            <p>
+              Post comment as{" "}
+              <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
+            </p>
+            <p>
+              <button className="post-comment-button" type="submit">
+                Post
+              </button>
+            </p>
           </form>
-        </label>
+        </section>
       );
     } else {
       return (
-        <p>
-          <button onClick={loginHandler}>Login</button> to post a comment
-        </p>
+        <section className="post-comment-container">
+          <button className="post-comment-login-button" onClick={loginHandler}>
+            Login
+          </button>{" "}
+          to post a comment
+        </section>
       );
     }
   }
@@ -51,7 +63,7 @@ export default class PostComment extends Component {
         this.setState({ commentInput: "" });
       })
       .catch(err => {
-        console.log(err);
+        this.setState({ err });
       });
   };
 }

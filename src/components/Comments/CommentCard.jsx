@@ -3,38 +3,38 @@ import { Link } from "@reach/router";
 import VoteChanger from "../Tools/VoteChanger";
 import { dateFormatter } from "../Tools/Utils";
 
-export default function CommentCard(props) {
-  const {
-    comment: { comment_id, author, votes, created_at, body },
-    index,
-    loggedInUser,
-    deleteComment
-  } = props;
+export default function CommentCard({
+  comment: { comment_id, author, votes, created_at, body },
+  index,
+  loggedInUser,
+  deleteComment
+}) {
   return (
     <li>
-      <p>
+      <p className="comment-card-title">
         <Link to={`/users/${author}`}>
-          {author === loggedInUser ? "you" : author}
+          {author === loggedInUser ? "You" : author}
         </Link>{" "}
         on {dateFormatter(created_at)}
-        {loggedInUser === author && (
-          <button
-            onClick={() => {
-              deleteComment(comment_id, index);
-            }}
-          >
-            Delete Comment
-          </button>
-        )}
       </p>
-      <p>{body}</p>
-      <p>
+      <p className="comment-card-body">{body}</p>
+      <p className="comment-card-footer">
         <VoteChanger
           loggedInUser={loggedInUser}
           comment_id={comment_id}
           author={author}
           votes={votes}
-        />
+        />{" "}
+        {loggedInUser === author && (
+          <button
+            className="delete-comment-button"
+            onClick={() => {
+              deleteComment(comment_id, index);
+            }}
+          >
+            Delete
+          </button>
+        )}
       </p>
     </li>
   );

@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "@reach/router";
 
 export default function NavBar() {
   return (
-    <Fragment>
+    <nav className="header-navbar">
       <Link className="navbar-link" to="/articles">
         ARTICLES
       </Link>
@@ -11,6 +11,6 @@ export default function NavBar() {
       <Link className="navbar-link" to="/topics">
         TOPICS
       </Link>
-    </Fragment>
+    </nav>
   );
 }

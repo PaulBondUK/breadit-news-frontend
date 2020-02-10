@@ -5,7 +5,7 @@ export default function SingleTopicPage(props) {
   const { loggedInUser, topic_slug } = props;
   return (
     <main>
-      <h1>/{topic_slug}</h1>
+      <h2>/{topic_slug}</h2>
       <ArticleList loggedInUser={loggedInUser} topic_slug={topic_slug} />
     </main>
   );

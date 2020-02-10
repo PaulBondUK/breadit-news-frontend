@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Router } from "@reach/router";
 import "./App.css";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import ArticlePage from "./components/Articles/ArticlePage";
 import SingleArticlePage from "./components/Articles/SingleArticlePage";
 import ErrorPage from "./components/Errors/ErrorPage";
@@ -36,6 +37,7 @@ export default class App extends Component {
           <SingleUserPage path="users/:username" loggedInUser={loggedInUser} />
           <ErrorPage default />
         </Router>
+        <Footer />
       </div>
     );
   }

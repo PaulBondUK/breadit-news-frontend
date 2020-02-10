@@ -7,7 +7,6 @@ import Loader from "../Tools/Loader";
 
 export default class CommentList extends Component {
   state = {
-    postCommentToggle: false,
     commentsData: null,
     isLoading: true,
     err: null
@@ -29,8 +28,8 @@ export default class CommentList extends Component {
             loginHandler={loginHandler}
             addPostedComment={this.addPostedComment}
           />
-          <h3>{commentsData.length} Comments</h3>
-          <ol>
+          <h3 className="total-comments">{commentsData.length} Comments</h3>
+          <ul>
             {commentsData.map((comment, index) => {
               return (
                 <CommentCard
@@ -42,7 +41,7 @@ export default class CommentList extends Component {
                 />
               );
             })}
-          </ol>
+          </ul>
         </section>
       );
     }
@@ -71,8 +70,12 @@ export default class CommentList extends Component {
       .deleteCommentByCommentId(comment_id)
       .then(() => {
         this.setState(currentState => {
-          const newCommentsData = [...currentState.commentsData];
-          newCommentsData.splice(index, 1);
+          const newCommentsData = [];
+          currentState.commentsData.forEach(comment => {
+            if (comment.comment_id !== comment_id) {
+              newCommentsData.push(comment);
+            }
+          });
           return { commentsData: newCommentsData };
         });
       })

@@ -1,12 +1,14 @@
 import React, { Fragment } from "react";
 import { Link } from "@reach/router";
+import { GoPerson } from "react-icons/go";
 
 export default function LoginDisplay({ loggedInUser, loginHandler }) {
   return (
     <Fragment>
       {loggedInUser && (
         <Fragment>
-          Logged in as&nbsp;
+          <GoPerson />
+          &nbsp;
           <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
         </Fragment>
       )}

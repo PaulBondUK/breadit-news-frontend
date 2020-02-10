@@ -18,11 +18,11 @@ export default class TopicList extends Component {
       return <Loader />;
     } else {
       return (
-        <ol>
+        <ul>
           {topicData.map(topic => {
             return <TopicCard key={topic.slug} topic={topic} />;
           })}
-        </ol>
+        </ul>
       );
     }
   }

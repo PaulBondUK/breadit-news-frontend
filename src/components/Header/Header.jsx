@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "@reach/router";
-import BreaditLogo from "../../images/breadit_logo.png";
+import BreaditLogo from "../../images/breadit_logo_small.png";
 import LoginDisplay from "./LoginDisplay";
 import NavBar from "./NavBar";
+import HamburgerMenu from "./HamburgerMenu";
 
 export default function Header({ loggedInUser, loginHandler }) {
   return (
@@ -20,12 +21,11 @@ export default function Header({ loggedInUser, loginHandler }) {
           <Link to="/">BREADIT</Link>
         </h1>
       </section>
-      <nav className="header-navbar">
-        <NavBar />
-      </nav>
-      <p className="header-login">
+      <NavBar />
+      <HamburgerMenu />
+      <section className="header-login">
         <LoginDisplay loggedInUser={loggedInUser} loginHandler={loginHandler} />
-      </p>
+      </section>
     </header>
   );
 }

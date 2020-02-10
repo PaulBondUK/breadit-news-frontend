@@ -5,8 +5,6 @@ import ErrorPage from "../Errors/ErrorPage";
 import SortArticles from "./SortArticles";
 import Loader from "../Tools/Loader";
 
-// React Fragment
-
 export default class ArticleList extends Component {
   state = {
     articleData: null,
@@ -36,13 +34,13 @@ export default class ArticleList extends Component {
       return <Loader />;
     } else {
       return (
-        <div className="article-list">
-          {author && <h2>Articles by {author}</h2>}
+        <section className="article-list">
+          {author && <h3>Articles by {author}</h3>}
           <SortArticles
             selectedOption={selectedOption}
             sortArticlesBy={this.sortArticlesBy}
           />
-          <ol className="article-list">
+          <ul className="article-list">
             {articleData.map(article => {
               return (
                 <ArticleCard
@@ -52,15 +50,17 @@ export default class ArticleList extends Component {
                 />
               );
             })}
-          </ol>
-          <button
-            className="more-articles-button"
-            disabled={noMoreArticles}
-            onClick={this.loadMoreArticles}
-          >
-            {noMoreArticles ? "No more articles" : "Load more articles"}
-          </button>
-        </div>
+          </ul>
+          <p className="more-articles">
+            <button
+              className="more-articles-button"
+              disabled={noMoreArticles}
+              onClick={this.loadMoreArticles}
+            >
+              {noMoreArticles ? "No more articles" : "Load more articles"}
+            </button>
+          </p>
+        </section>
       );
     }
   }
@@ -96,14 +96,13 @@ export default class ArticleList extends Component {
   loadMoreArticles = () => {
     const { topic_slug, author } = this.props;
     const { page, sort_by, order } = this.state;
-    const newPage = page + 1;
     api
-      .getArticles({ page: newPage, sort_by, order, topic_slug, author })
+      .getArticles({ page: page + 1, sort_by, order, topic_slug, author })
       .then(({ articles }) => {
         this.setState(currentState => {
           return {
             articleData: [...currentState.articleData, ...articles],
-            page: newPage
+            page: currentState.page + 1
           };
         });
       })
@@ -149,45 +148,3 @@ export default class ArticleList extends Component {
       });
   };
 }
-
-// componentDidUpdate(prevProps, prevState) {
-//   const { sort_by, order, limit, articleData } = this.state;
-//   const { topic_slug, author } = this.props;
-//   if (prevState.sort_by !== sort_by || prevState.order !== order) {
-//     this.setState({
-//       isLoading: true,
-//       limit: 10,
-//       noMoreArticles: false
-//     });
-//     api
-//       .getArticles(10, sort_by, order, topic_slug, author)
-//       .then(newArticleData => {
-//         this.setState({
-//           articleData: newArticleData,
-//           isLoading: false,
-//           noMoreArticles: articleData.length < 10
-//         });
-//       })
-//       .catch(err => {
-//         this.setState({ err: err, isLoading: false });
-//       });
-//   } else if (prevState.limit !== limit && limit !== 10) {
-//     api
-//       .getArticles(limit, sort_by, order, topic_slug, author)
-//       .then(newArticleData => {
-//         if (newArticleData.length === articleData.length) {
-//           this.setState({ noMoreArticles: true });
-//         } else if (newArticleData.length - articleData.length < 10) {
-//           this.setState({
-//             articleData: newArticleData,
-//             noMoreArticles: true
-//           });
-//         } else {
-//           this.setState({ articleData: newArticleData });
-//         }
-//       })
-//       .catch(err => {
-//         this.setState({ err: err, isLoading: false });
-//       });
-//   }
-// }

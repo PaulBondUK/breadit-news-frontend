@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import * as api from "../../Api";
+import { FaHeart } from "react-icons/fa";
 
 export default class VoteChanger extends Component {
   state = {
@@ -13,30 +14,31 @@ export default class VoteChanger extends Component {
     const id = article_id ? article_id : comment_id;
     return (
       <Fragment>
-        {votes + voteChange}{" "}
-        {votes + voteChange === 1 || votes + voteChange === -1
-          ? "Vote"
-          : "Votes"}
+        <FaHeart />
+        &nbsp;
+        {votes + voteChange}&nbsp;
         <button
+          className="vote-changer-button"
           onClick={() => this.addVoteToItem(id, -1)}
           disabled={
             !loggedInUser
               ? true
               : loggedInUser === author
               ? true
-              : voteChange !== 0
+              : voteChange === -1
           }
         >
           -
         </button>
         <button
+          className="vote-changer-button"
           onClick={() => this.addVoteToItem(id, 1)}
           disabled={
             !loggedInUser
               ? true
               : loggedInUser === author
               ? true
-              : voteChange !== 0
+              : voteChange === 1
           }
         >
           +

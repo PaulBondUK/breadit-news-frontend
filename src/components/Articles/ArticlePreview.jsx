@@ -18,13 +18,13 @@ export default class ArticlePreview extends Component {
       return <Loader />;
     } else {
       return (
-        <ol>
+        <ul>
           {articleData.map(article => {
             return (
               <ArticlePreviewCard article={article} key={article.article_id} />
             );
           })}
-        </ol>
+        </ul>
       );
     }
   }

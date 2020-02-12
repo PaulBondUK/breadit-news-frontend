@@ -4,9 +4,9 @@ Breadit-News is a is a Reddit-style social news aggregation, web content rating,
 
 It was created as a front-end project while studying at [Northcoders](https://www.northcoders.com), to provide a user interface to my [back-end project](https://github.com/PaulBondUK/be-nc-news).
 
-## Libraries
+## Technologies
 
-It was created with React and CSS, using [@reach/router](https://github.com/reach/router) for internal routing and [Axios](https://github.com/axios/axios) for API requests.
+It was created with ReactJS, HTML, and CSS, using [@reach/router](https://github.com/reach/router) for internal routing and [Axios](https://github.com/axios/axios) for API requests.
 
 ## Prerequisites
 

@@ -30,12 +30,11 @@ export default class CommentList extends Component {
           />
           <h3 className="total-comments">{commentsData.length} Comments</h3>
           <ul>
-            {commentsData.map((comment, index) => {
+            {commentsData.map(comment => {
               return (
                 <CommentCard
                   key={comment.comment_id}
                   comment={comment}
-                  index={index}
                   loggedInUser={loggedInUser}
                   deleteComment={this.deleteComment}
                 />
@@ -65,7 +64,7 @@ export default class CommentList extends Component {
     });
   };
 
-  deleteComment = (comment_id, index) => {
+  deleteComment = comment_id => {
     api
       .deleteCommentByCommentId(comment_id)
       .then(() => {

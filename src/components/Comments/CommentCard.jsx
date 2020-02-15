@@ -5,7 +5,6 @@ import { dateFormatter } from "../Tools/Utils";
 
 export default function CommentCard({
   comment: { comment_id, author, votes, created_at, body },
-  index,
   loggedInUser,
   deleteComment
 }) {
@@ -29,7 +28,7 @@ export default function CommentCard({
           <button
             className="delete-comment-button"
             onClick={() => {
-              deleteComment(comment_id, index);
+              deleteComment(comment_id);
             }}
           >
             Delete

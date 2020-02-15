@@ -511,7 +511,7 @@ h4 {
   outline: none;
 }
 
-@keyframes slide {
+@keyframes slide-in {
   0% {
     transform: translateX(+280px);
   }
@@ -520,7 +520,29 @@ h4 {
   }
 }
 
-.hamburger-menu-container {
+@keyframes slide-out {
+  0% {
+    transform: translateX(-280px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.hamburger-menu-container-closed {
+  position: fixed;
+  top: 0px;
+  right: -280px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 280px;
+  grid-template-areas: "hamburger-menu-blankspace hamburger-menu";
+  animation: slide-out 0.2s;
+}
+
+.hamburger-menu-container-open {
   position: fixed;
   top: 0px;
   right: 0px;
@@ -530,7 +552,7 @@ h4 {
   display: grid;
   grid-template-columns: auto 280px;
   grid-template-areas: "hamburger-menu-blankspace hamburger-menu";
-  animation: slide 0.1s;
+  animation: slide-in 0.2s;
 }
 
 .hamburger-menu {

@@ -4,7 +4,7 @@ export default function SortArticles(props) {
   const { selectedOption, sortArticlesBy } = props;
   return (
     <label className="sorting-articles-container">
-      <p className="sorting-articles-text">Sorting Articles By</p>
+      <p className="sorting-articles-text">Sort By</p>
       <select
         className="sorting-articles-dropdown"
         value={selectedOption}

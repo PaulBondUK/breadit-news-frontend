@@ -272,22 +272,25 @@ background-color: white; */
 .single-article-body {
   line-height: 2;
   font-size: 1.5em;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 40px;
-  margin-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
   font-family: Georgia;
   text-align: justify;
   color: rgb(65, 63, 77);
+  background-color: rgb(251, 248, 235);
 }
 
 .post-comment-input {
-  width: 70vw;
   height: 50px;
   font-size: 1em;
   text-align: start;
   resize: none;
   margin-bottom: 10px;
+  background-color: rgb(251, 248, 235);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .post-comment-container {
@@ -388,6 +391,7 @@ background-color: white; */
 
 .comment-card-footer {
   padding-left: 5px;
+  color: rgb(65, 63, 77);
 }
 
 .article-card-votes {
@@ -606,6 +610,11 @@ background-color: white; */
 
   .post-comment-input {
     width: 95vw;
+  }
+
+  .single-article-card-topic-icon {
+    font-size: 20em;
+    text-align: center;
   }
 
   .single-article-body {

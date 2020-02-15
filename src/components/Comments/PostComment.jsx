@@ -16,6 +16,10 @@ export default class PostComment extends Component {
     } else if (loggedInUser) {
       return (
         <section className="post-comment-container">
+          <p>
+            Logged in as{" "}
+            <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
+          </p>
           <form onSubmit={this.handleSubmit}>
             <input
               required
@@ -24,10 +28,6 @@ export default class PostComment extends Component {
               value={commentInput}
               className="post-comment-input"
             />
-            <p>
-              Post comment as{" "}
-              <Link to={`/users/${loggedInUser}`}>{loggedInUser}</Link>
-            </p>
             <p>
               <button className="post-comment-button" type="submit">
                 Post

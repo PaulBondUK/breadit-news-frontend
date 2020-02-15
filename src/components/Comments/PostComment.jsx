@@ -30,7 +30,7 @@ export default class PostComment extends Component {
             />
             <p>
               <button className="post-comment-button" type="submit">
-                Post
+                Post Comment
               </button>
             </p>
           </form>

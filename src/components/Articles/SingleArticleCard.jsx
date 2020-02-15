@@ -18,7 +18,7 @@ export default function SingleArticleCard({
   return (
     <section>
       <p className="single-article-card-topic-icon">{topicIcons[topic]}</p>
-      <h2>{title}</h2>
+      <h2 className="single-article-title">{title}</h2>
       <p className="article-card-title">
         By{" "}
         <Link to={`/users/${author}`}>

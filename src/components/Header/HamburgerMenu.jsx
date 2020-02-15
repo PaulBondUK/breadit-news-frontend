@@ -8,6 +8,7 @@ export default class HamburgerMenu extends Component {
   };
   render() {
     const { showMenu } = this.state;
+    const { loggedInUser } = this.props;
     return (
       <nav className="hamburger-nav-container">
         {showMenu ? (

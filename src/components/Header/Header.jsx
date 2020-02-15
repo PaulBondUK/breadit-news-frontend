@@ -22,7 +22,7 @@ export default function Header({ loggedInUser, loginHandler }) {
         </h1>
       </section>
       <NavBar />
-      <HamburgerMenu />
+      <HamburgerMenu loggedInUser={loggedInUser} />
       <section className="header-login">
         <LoginDisplay loggedInUser={loggedInUser} loginHandler={loginHandler} />
       </section>

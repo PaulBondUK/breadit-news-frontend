@@ -576,6 +576,36 @@ h4 {
   background-color: rgb(183, 219, 241);
 }
 
+.hamburger-link-button {
+  border: 1px;
+  font-size: 35px;
+  display: block;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  font-family: "Roboto", sans-serif;
+  width: 280px;
+  text-align: right;
+  font-weight: bold;
+  color: rgb(65, 63, 77);
+  background-color: rgb(183, 219, 241);
+  outline-width: 0px;
+  outline: none;
+}
+
+.hamburger-link {
+  border: 1px;
+  font-size: 35px;
+  display: block;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  font-family: "Roboto", sans-serif;
+  width: 260px;
+  text-align: right;
+  font-weight: bold;
+  color: rgb(65, 63, 77);
+  background-color: rgb(183, 219, 241);
+}
+
 .hamburger-menu-blankspace {
   grid-area: hamburger-menu-blankspace;
   display: block;
@@ -586,18 +616,6 @@ h4 {
   width: 100%;
   height: 100%;
   z-index: 3;
-}
-
-.hamburger-link {
-  border: 1px;
-  font-size: 35px;
-  display: block;
-  padding-bottom: 5px;
-  padding-right: 20px;
-  font-family: "Roboto", sans-serif;
-  width: 100%;
-  text-align: right;
-  font-weight: bold;
 }
 
 .hamburger-menu a:link,

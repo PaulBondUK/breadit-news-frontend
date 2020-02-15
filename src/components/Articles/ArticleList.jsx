@@ -35,7 +35,9 @@ export default class ArticleList extends Component {
     } else {
       return (
         <section className="article-list">
-          {author && <h3>Articles by {author}</h3>}
+          {author && (
+            <h3 className="single-user-article-title">Articles by {author}</h3>
+          )}
           <SortArticles
             selectedOption={selectedOption}
             sortArticlesBy={this.sortArticlesBy}

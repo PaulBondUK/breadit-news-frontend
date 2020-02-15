@@ -4,7 +4,7 @@ import ArticlePreview from "../Articles/ArticlePreview";
 export default function Homepage() {
   return (
     <main>
-      <h2>Welcome to Breadit</h2>
+      <h2 className="homepage-title">Welcome to Breadit.</h2>
       <div className="homepage-container">
         <section className="homepage-left-column">
           <h3 className="homepage-subtitle">Fresh out the Oven</h3>

@@ -15,7 +15,9 @@ export default function Homepage() {
         </section>
         <section className="homepage-right-column">
           <h3 className="homepage-subtitle">Hot and Toasty</h3>
-          <p className="homepage-description">The most popular articles.</p>
+          <p className="homepage-description">
+            The most popular articles today.
+          </p>
           <ArticlePreview sort_by="votes" />
         </section>
       </div>

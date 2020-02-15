@@ -95,7 +95,9 @@ h4 {
   background-color: white;
   margin-left: 1px;
   margin-right: 1px;
-  border-radius: 6px;
+  border-radius: 4px;
+  border: solid 2px;
+  border-color: rgb(117, 178, 204);
 }
 
 .vote-changer-button:disabled {
@@ -320,16 +322,6 @@ h4 {
   border-radius: 6px;
 }
 
-.header-login-button {
-  font-size: 18px;
-  font-weight: bold;
-  color: rgb(49, 151, 195);
-  background-color: rgb(49, 151, 195);
-  padding: 5px;
-  border-radius: 6px;
-  background-color: white;
-}
-
 .total-comments {
   margin-bottom: 30px;
 }
@@ -340,6 +332,7 @@ h4 {
   color: white;
   background-color: rgb(49, 151, 195);
   padding: 5px;
+  border-radius: 6px;
 }
 
 .delete-comment-button {
@@ -349,6 +342,7 @@ h4 {
   color: white;
   background-color: rgb(49, 151, 195);
   padding: 3px;
+  border-radius: 4px;
 }
 
 .article-card {
@@ -433,6 +427,7 @@ h4 {
   color: white;
   background-color: rgb(49, 151, 195);
   padding: 5px;
+  border-radius: 6px;
 }
 
 .more-articles {

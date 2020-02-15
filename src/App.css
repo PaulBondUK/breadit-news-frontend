@@ -129,9 +129,6 @@ h4 {
   height: 30px;
 }
 
-.main-display {
-}
-
 .header-navbar a:link,
 .header-navbar a:visited {
   color: white;
@@ -250,9 +247,6 @@ h4 {
 .header-login a:visited:hover {
   color: lightskyblue;
   text-decoration: underline;
-}
-
-.page-title {
 }
 
 .loader {

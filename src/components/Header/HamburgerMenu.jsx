@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { MdClose, MdMenu } from "react-icons/md";
+import { GoPerson } from "react-icons/go";
 
 export default class HamburgerMenu extends Component {
   state = {
@@ -8,7 +9,7 @@ export default class HamburgerMenu extends Component {
   };
   render() {
     const { showMenu } = this.state;
-    const { loggedInUser } = this.props;
+    const { loggedInUser, loginHandler } = this.props;
     return (
       <nav className="hamburger-nav-container">
         {showMenu ? (
@@ -33,6 +34,20 @@ export default class HamburgerMenu extends Component {
             className="hamburger-menu-blankspace"
           ></p>
           <p className="hamburger-menu">
+            {loggedInUser ? (
+              <Link
+                to={`/users/${loggedInUser}`}
+                onClick={this.menuToggler}
+                className="hamburger-link"
+              >
+                <GoPerson />
+              </Link>
+            ) : (
+              <button onClick={loginHandler} className="hamburger-link-button">
+                LOGIN
+              </button>
+            )}
+
             <Link
               onClick={this.menuToggler}
               className="hamburger-link"
@@ -40,7 +55,7 @@ export default class HamburgerMenu extends Component {
             >
               ARTICLES
             </Link>
-            &nbsp;
+
             <Link
               onClick={this.menuToggler}
               className="hamburger-link"

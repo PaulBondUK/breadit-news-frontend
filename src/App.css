@@ -98,14 +98,6 @@ h4 {
   border-radius: 6px;
 }
 
-/* font-size: 18px;
-font-weight: bold;
-color: rgb(49, 151, 195);
-background-color: rgb(49, 151, 195);
-padding: 5px;
-border-radius: 6px;
-background-color: white; */
-
 .vote-changer-button:disabled {
   opacity: 0.5;
 }
@@ -306,8 +298,9 @@ background-color: white; */
   background-color: rgb(255, 253, 245);
   width: 100%;
   box-sizing: border-box;
-  outline: solid 1px;
-  outline-color: rgb(49, 151, 195);
+  border: 2px solid;
+  border-color: rgb(49, 151, 195);
+  border-radius: 6px;
 }
 
 .post-comment-container {
@@ -324,6 +317,17 @@ background-color: white; */
   color: white;
   background-color: rgb(49, 151, 195);
   padding: 5px;
+  border-radius: 6px;
+}
+
+.header-login-button {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(49, 151, 195);
+  background-color: rgb(49, 151, 195);
+  padding: 5px;
+  border-radius: 6px;
+  background-color: white;
 }
 
 .total-comments {

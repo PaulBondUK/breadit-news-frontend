@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Crete+Round");
 @import url("https://fonts.googleapis.com/css?family=Nova+Round");
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 
 * {
   padding: 0px;
@@ -69,16 +70,14 @@ h2 {
   color: rgb(65, 63, 77);
   font-weight: bold;
   text-align: center;
-  font-family: "Nova Round", cursive;
-  font-size: 3em;
-  padding-bottom: 20px;
+  font-size: 5em;
+  padding-bottom: 5px;
 }
 
 h3 {
   color: rgb(65, 63, 77);
   font-weight: bold;
   text-align: center;
-  font-family: "Nova Round", cursive;
   font-size: 2em;
 }
 
@@ -197,15 +196,15 @@ h4 {
 }
 
 .header-navbar {
-  font-size: 2.5vmin;
+  font-size: 3vmin;
   grid-area: header-navbar;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Nova Round", cursive;
   color: white;
-  letter-spacing: 2px;
   font-weight: bold;
+  letter-spacing: 0.1em;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .navbar-link-articles {
@@ -257,8 +256,8 @@ h4 {
 }
 
 .single-article-title {
-  font-size: 2.5em;
-  text-align: left;
+  font-size: 2.2em;
+  text-align: center;
 }
 
 .single-article-body {
@@ -269,7 +268,7 @@ h4 {
   padding-left: 40px;
   padding-right: 40px;
   font-family: Georgia;
-  text-align: justify;
+  text-align: left;
   color: rgb(65, 63, 77);
   background-color: rgb(255, 253, 245);
 }
@@ -444,14 +443,18 @@ h4 {
   grid-template-areas:
     "single-user-avatar single-user-title"
     "single-user-avatar single-user-fullname";
+  padding-bottom: 50px;
+  padding-top: 30px;
   margin-bottom: 30px;
+  border-bottom: 2px solid;
 }
 
 .single-user-title {
   grid-area: single-user-title;
-  text-align: left;
+  text-align: center;
   display: flex;
   align-items: flex-end;
+  font-size: 8vmin;
 }
 
 .single-user-fullname {
@@ -459,6 +462,7 @@ h4 {
   font-size: 1.5em;
   color: rgb(65, 63, 77);
   text-align: left;
+  padding-top: 5px;
 }
 
 .single-user-avatar {
@@ -554,8 +558,7 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding-top: 90px;
-  padding-right: 20px;
+  padding-top: 100px;
   background-color: rgb(183, 219, 241);
 }
 
@@ -573,10 +576,11 @@ h4 {
 
 .hamburger-link {
   border: 1px;
-  font-size: 2.2em;
+  font-size: 35px;
   display: block;
   padding-bottom: 5px;
-  font-family: "Nova Round", cursive;
+  padding-right: 20px;
+  font-family: "Roboto", sans-serif;
   width: 100%;
   text-align: right;
   font-weight: bold;
@@ -628,13 +632,13 @@ h4 {
 
 @media only screen and (max-width: 740px) {
   h2 {
-    font-size: 2.5em;
+    font-size: 4em;
   }
 
   main {
     padding-left: 2%;
     padding-right: 2%;
-    min-height: calc(100vh - 180px);
+    min-height: calc(100vh - 130px);
   }
 
   footer {

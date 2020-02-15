@@ -19,31 +19,36 @@ export default class HamburgerMenu extends Component {
             <MdMenu />
           </button>
         )}
-        {showMenu && (
-          <section className="hamburger-menu-container">
-            <p
+
+        <section
+          className={
+            showMenu
+              ? "hamburger-menu-container-open"
+              : "hamburger-menu-container-closed"
+          }
+        >
+          <p
+            onClick={this.menuToggler}
+            className="hamburger-menu-blankspace"
+          ></p>
+          <p className="hamburger-menu">
+            <Link
               onClick={this.menuToggler}
-              className="hamburger-menu-blankspace"
-            ></p>
-            <p className="hamburger-menu">
-              <Link
-                onClick={this.menuToggler}
-                className="hamburger-link"
-                to="/articles"
-              >
-                ARTICLES
-              </Link>
-              &nbsp;
-              <Link
-                onClick={this.menuToggler}
-                className="hamburger-link"
-                to="/topics"
-              >
-                TOPICS
-              </Link>
-            </p>
-          </section>
-        )}
+              className="hamburger-link"
+              to="/articles"
+            >
+              ARTICLES
+            </Link>
+            &nbsp;
+            <Link
+              onClick={this.menuToggler}
+              className="hamburger-link"
+              to="/topics"
+            >
+              TOPICS
+            </Link>
+          </p>
+        </section>
       </nav>
     );
   }

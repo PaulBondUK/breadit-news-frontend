@@ -12,7 +12,7 @@ export default class SingleUserPage extends Component {
   };
   render() {
     const { userData, isLoading, err } = this.state;
-    const { loggedInUser, username } = this.props;
+    const { loggedInUser, username, loginHandler } = this.props;
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
@@ -27,7 +27,14 @@ export default class SingleUserPage extends Component {
               alt={`avatar of user ${userData.username}`}
             />
             <h2 className="single-user-title">{username}</h2>
-            <p className="single-user-fullname">Name: {userData.name}</p>
+            <div className="single-user-fullname">
+              <p className="single-user-fullname-name">Name: {userData.name}</p>
+              {loggedInUser && (
+                <button className="header-login-button" onClick={loginHandler}>
+                  Logout
+                </button>
+              )}
+            </div>
           </section>
           <ArticleList author={userData.username} loggedInUser={loggedInUser} />
         </main>

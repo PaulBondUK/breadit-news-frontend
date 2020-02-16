@@ -38,7 +38,7 @@ export default class HamburgerMenu extends Component {
               <Link
                 to={`/users/${loggedInUser}`}
                 onClick={this.menuToggler}
-                className="hamburger-link"
+                className="hamburger-link-user"
               >
                 <GoPerson />
               </Link>

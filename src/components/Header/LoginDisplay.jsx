@@ -14,7 +14,7 @@ export default function LoginDisplay({ loggedInUser, loginHandler }) {
       )}
       &nbsp;
       <button className="header-login-button" onClick={loginHandler}>
-        {loggedInUser ? "Logout" : "Click to Login"}
+        {loggedInUser ? "Logout" : "Login"}
       </button>
     </Fragment>
   );

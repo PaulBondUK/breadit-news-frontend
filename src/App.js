@@ -34,7 +34,11 @@ export default class App extends Component {
             path="topics/:topic_slug"
             loggedInUser={loggedInUser}
           />
-          <SingleUserPage path="users/:username" loggedInUser={loggedInUser} />
+          <SingleUserPage
+            path="users/:username"
+            loggedInUser={loggedInUser}
+            loginHandler={this.loginHandler}
+          />
           <ErrorPage default />
         </Router>
         <Footer />

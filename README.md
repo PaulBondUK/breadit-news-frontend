@@ -12,7 +12,7 @@ My main focus was usability, particularly on mobile devices. I built a hamburger
 
 ## Technologies
 
-It was created with ReactJS, HTML, and CSS, using [@reach/router](https://github.com/reach/router) for internal routing and [Axios](https://github.com/axios/axios) for API requests.
+It was created with Node.js, ReactJS, HTML, and CSS, using [@reach/router](https://github.com/reach/router) for internal routing and [Axios](https://github.com/axios/axios) for API requests.
 
 ## Prerequisites
 
@@ -24,13 +24,21 @@ node -v
 
 ## Installation instructions
 
-To install:
+First, clone the repo to your machine.
 
 ```
 git clone https://github.com/PaulBondUK/breadit-news-frontend.git
+```
 
+cd into the folder.
+
+```
 cd breadit-news-frontend
+```
 
+Finally, install the dependencies.
+
+```
 npm install
 ```
 

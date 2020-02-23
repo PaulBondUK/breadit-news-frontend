@@ -19,3 +19,7 @@ Please try logging in and logging out, as components are built to read the logge
 ## Technologies
 
 It was created with Node.js, React, HTML, and CSS, using [@reach/router](https://github.com/reach/router) for internal routing and [Axios](https://github.com/axios/axios) for API requests.
+
+## Contact
+
+Please get in touch via [LinkedIn](https://www.linkedin.com/in/paulbondmcr/)

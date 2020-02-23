@@ -1,6 +1,6 @@
 # Breadit (Front-end)
 
-View the hosted version at [www.breadit-news.herokuapp.com](http://www.breadit-news.herokuapp.com).
+View the hosted version at [breadit-news.herokuapp.com](https://breadit-news.herokuapp.com).
 
 ## Introduction
 

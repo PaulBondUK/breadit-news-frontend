@@ -1,43 +1,14 @@
 import React, { Component } from "react";
-import * as api from "../../Api";
-import ErrorPage from "../Errors/ErrorPage";
 import ArticlePreviewCard from "./ArticlePreviewCard";
-import Loader from "../Tools/Loader";
 
-export default class ArticlePreview extends Component {
-  state = {
-    articleData: null,
-    isLoading: true,
-    err: null
-  };
-  render() {
-    const { articleData, isLoading, err } = this.state;
-    if (err) {
-      return <ErrorPage err={err} />;
-    } else if (isLoading) {
-      return <Loader />;
-    } else {
-      return (
-        <ul>
-          {articleData.map(article => {
-            return (
-              <ArticlePreviewCard article={article} key={article.article_id} />
-            );
-          })}
-        </ul>
-      );
-    }
-  }
-
-  componentDidMount() {
-    const { sort_by } = this.props;
-    api
-      .getArticles({ limit: 5, sort_by })
-      .then(({ articles }) => {
-        this.setState({ articleData: articles, isLoading: false });
-      })
-      .catch(err => {
-        this.setState({ err, isLoading: false });
-      });
-  }
+export default function ArticlePreview({ articleData }) {
+  return (
+    <ul>
+      {articleData.articles.map(article => {
+        return (
+          <ArticlePreviewCard article={article} key={article.article_id} />
+        );
+      })}
+    </ul>
+  );
 }

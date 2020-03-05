@@ -12,9 +12,9 @@ Thankfully, this one is a little different. Think Reddit, but with numerous brea
 
 It was created as a front-end project while studying at [Northcoders](https://www.northcoders.com), to provide a user interface to my [back-end project](https://github.com/PaulBondUK/breadit-news-backend.git)
 
-My main focus was usability, particularly on mobile devices; I made sure everything was readable on smaller screens, and included a hamburger menu for navigation.
+My main focus was usability, particularly on mobile devices; I made sure everything was readable on smaller screens, and included a self-made hamburger menu for navigation.
 
-Please try logging in and logging out, as components are built to read the logged in status and change how they operate.
+Please try logging in and logging out, as components are built to read the logged in status and change how they operate, and there's a nice little easter egg for anyone who comes across a 404 error!
 
 ## Technologies
 
